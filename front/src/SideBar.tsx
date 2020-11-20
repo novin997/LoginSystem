@@ -1,26 +1,25 @@
-import React from "react";
-import {
-  Grid,
-  Header,
-  Icon,
-  Menu,
-  Message,
-  Segment,
-  Sidebar,
-} from "semantic-ui-react";
+import React, { useState } from "react";
+import { Icon, Menu, Segment, Sidebar } from "semantic-ui-react";
+import Anime from "./Anime";
 import "./SideBar.scss";
 
 export default function SideBar() {
+  const [collapsed, setCollapsed] = useState(true);
+
+  function toggle() {
+    setCollapsed(!collapsed);
+  }
+
   return (
     <div className="sidebar">
       <Sidebar.Pushable as={Segment}>
         <Sidebar
           as={Menu}
-          animation="slide along"
+          animation="overlay"
           icon="labeled"
           inverted
           vertical
-          visible={true}
+          visible={collapsed}
           width="thin"
         >
           <Menu.Item as="a">
@@ -38,15 +37,7 @@ export default function SideBar() {
         </Sidebar>
 
         <Sidebar.Pusher>
-          <Segment basic className="content">
-            <Message>
-              <Message.Header>Changes in Service</Message.Header>
-              <p>
-                We updated our privacy policy here to better service our
-                customers. We recommend reviewing the changes.
-              </p>
-            </Message>
-          </Segment>
+          <Anime />
         </Sidebar.Pusher>
       </Sidebar.Pushable>
     </div>
