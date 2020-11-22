@@ -36,21 +36,21 @@ export default function SideBar() {
               visible={!isCollapsed}
               width="thin"
             >
-              <Link to="/">
+              <Link onClick={toggle} to="/">
                 <Menu.Item as="a">
                   <Icon name="home" />
                   Home
                 </Menu.Item>
               </Link>
 
-              <Link to="/anime">
+              <Link onClick={toggle} to="/anime">
                 <Menu.Item as="a">
                   <Icon name="gamepad" />
                   Anime
                 </Menu.Item>
               </Link>
 
-              <Link to="/games">
+              <Link onClick={toggle} to="/games">
                 <Menu.Item as="a">
                   <Icon name="camera" />
                   Games
@@ -80,7 +80,7 @@ export default function SideBar() {
               </Route>
               <Route exact path="/login">
                 <Sidebar.Pusher>
-                  <Login />
+                  <Login toggle={toggle} />
                 </Sidebar.Pusher>
               </Route>
             </Switch>
