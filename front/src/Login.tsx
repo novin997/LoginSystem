@@ -11,10 +11,6 @@ export default function Login({ toggle }: { toggle: () => void }) {
       <div className="form-container">
         <Form>
           <Form.Field>
-            <label>Username</label>
-            <input placeholder="Username" />
-          </Form.Field>
-          <Form.Field>
             <label>Email</label>
             <input placeholder="Email" />
           </Form.Field>
