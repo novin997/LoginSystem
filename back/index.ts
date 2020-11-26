@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
+import authRoutes from "./routes/auth";
 
 dotenv.config();
 
@@ -12,6 +13,7 @@ const port = process.env.PORT || 8080;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+app.use("/api/user", authRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello" });

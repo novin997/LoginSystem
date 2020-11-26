@@ -1,9 +1,7 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { Button, Checkbox, Form, Header, Icon } from "semantic-ui-react";
-import "./Login.scss";
 
-export default function Login({ toggle }: { toggle: () => void }) {
+export default function NewAccount({ toggle }: { toggle: () => void }) {
   return (
     <div>
       <div className="sidebar-icon">
@@ -11,7 +9,11 @@ export default function Login({ toggle }: { toggle: () => void }) {
       </div>
       <div className="form-container">
         <Form>
-          <Header as="h1">Login</Header>
+          <Header as="h1">Create New Account</Header>
+          <Form.Field>
+            <label>Username</label>
+            <input placeholder="Username" />
+          </Form.Field>
           <Form.Field>
             <label>Email</label>
             <input type="email" placeholder="Email" />
@@ -22,11 +24,6 @@ export default function Login({ toggle }: { toggle: () => void }) {
           </Form.Field>
           <Form.Field>
             <Checkbox label="I agree to the Terms and Conditions" />
-          </Form.Field>
-          <Form.Field>
-            <Link to="newaccount">
-              <a href="/create">Create New Account</a>
-            </Link>
           </Form.Field>
           <Button type="submit">Submit</Button>
         </Form>

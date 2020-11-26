@@ -3,6 +3,7 @@ import { BrowserRouter, Link, Redirect, Route, Switch } from "react-router-dom";
 import { Icon, Menu, Segment, Sidebar } from "semantic-ui-react";
 import Anime from "./Anime";
 import Login from "./Login";
+import NewAccount from "./NewAccount";
 import "./SideBar.scss";
 
 // Interface for AuthContext
@@ -81,6 +82,11 @@ export default function SideBar() {
               <Route exact path="/login">
                 <Sidebar.Pusher>
                   <Login toggle={toggle} />
+                </Sidebar.Pusher>
+              </Route>
+              <Route exact path="/newaccount">
+                <Sidebar.Pusher>
+                  <NewAccount toggle={toggle} />
                 </Sidebar.Pusher>
               </Route>
             </Switch>
