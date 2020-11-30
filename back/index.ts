@@ -6,6 +6,7 @@ import cors from "cors";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth";
+import loginRoutes from "./routes/login";
 
 dotenv.config();
 
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 app.use("/api/user", authRoutes);
+app.use("/api/user", loginRoutes);
 
 app.get("/", (req, res) => {
   res.json({ message: "Hello" });
