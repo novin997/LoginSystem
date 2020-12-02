@@ -1,8 +1,8 @@
 import express from "express";
 import User from "../model/user";
 import validateUser from "../model/validateUser";
-import bcrypt, { hash } from "bcryptjs";
-import { Mongoose } from "mongoose";
+import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 const router = express.Router();
 
@@ -25,10 +25,21 @@ router.post("/login", async (req, res) => {
       .status(400)
       .json({ error: `Invalid password for ${user.email}` });
 
-  res.json({
+  //Generate token
+  const token = jwt.sign(
+    // payload data
+    {
+      username: user.username,
+      id: user._id,
+    },
+    process.env.TOKEN_SECRET!
+  );
+
+  res.header("auth-token", token).json({
     error: null,
     data: {
       message: "You have sucessfully login",
+      token,
     },
   });
 });
